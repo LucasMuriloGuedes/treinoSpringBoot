@@ -1,10 +1,11 @@
 package com.lucasmurilo.cursomc.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +17,10 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String imgUrl;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Order> orders = new ArrayList<>();
 
     public User(){
 
@@ -67,5 +72,9 @@ public class User implements Serializable {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }

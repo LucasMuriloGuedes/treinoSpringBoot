@@ -2,6 +2,7 @@ package com.lucasmurilo.cursomc.services;
 
 import com.lucasmurilo.cursomc.domain.User;
 import com.lucasmurilo.cursomc.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +11,12 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Autowired
     private UserRepository userRepository;
 
     public List<User> findAll(){
-        List list = userRepository.findAll();
-        return list;
+       List<User> obj = userRepository.findAll();
+        return obj;
     }
 
     public User findById(Long id){
