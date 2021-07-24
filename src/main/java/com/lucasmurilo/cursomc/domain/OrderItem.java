@@ -59,4 +59,8 @@ public class OrderItem {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public Double getSubTotal(){
+        return price * quantity;
+    }
 }
